@@ -1,0 +1,143 @@
+%! LuaLaTeX 文書
+\documentclass[aspectratio=149]{beamer}
+\usetheme{metropolis}
+\usefonttheme{professionalfonts}
+
+\usepackage{luatexja,luatexja-adjust}
+\usepackage[no-math,match,deluxe]{luatexja-fontspec}
+\usepackage{microtype}
+
+\hypersetup{unicode,colorlinks}
+\hypersetup{linkcolor=blue,urlcolor=teal,citecolor=olive}
+% \hypersetup{linkcolor=black,urlcolor=black,citecolor=black}
+
+\usepackage{pxrubrica}
+\usepackage{autobreak}
+\usepackage{tikz,pgfplots,tcolorbox}
+\usetikzlibrary{calc}
+\pgfplotsset{compat=1.16}
+
+\usepackage[version=4,arrows=pgf]{mhchem}
+\mhchemoptions{textfontcommand=\sffamily,mathfontcommand=\mathsf}
+\newcommand*\cec[1]{\cesplit{{\,\ }{\0}}{#1}}
+
+\usepackage{array}
+
+\usepackage{enumitem}
+\setlist[description,1]{labelsep*=1\zw}
+
+\ltjsetparameter{jacharrange={-2}}%ギリシア文字、キリル文字を AL Char に。
+\usepackage[no-math,match,deluxe,fontspec,jfm_yoko=jlreq,jfm_tate=jlreqv]{luatexja-preset}
+
+% \usepackage[osf]{newpxtext}\usepackage{classico}
+\usepackage[nowidering]{yhmath}
+\usepackage{newpxmath,amsmath,mathtools,amssymb,mathrsfs,rsfso,mleftright}
+\usepackage[T1]{fontenc}
+\mleftright
+
+\SetSymbolFont{operators}{normal}{T1}{uop}{m}{n}
+\DeclareMathAlphabet{\mathnormal}{T1}{pplx}{m}{it}
+\DeclareMathAlphabet{\mathrm}{T1}{uop}{m}{n}
+\DeclareMathAlphabet{\mathit}{T1}{pplx}{m}{it}
+\DeclareMathAlphabet{\mathtt}{T1}{lmtt}{m}{n}
+\DeclareMathAlphabet{\mathsf}{T1}{kurier}{m}{n}
+\DeclareMathAlphabet{\mathbold}{T1}{pplx}{b}{it}
+
+\DeclareSymbolFont{numbers}{T1}{pplx}{m}{n}
+\DeclareMathSymbol{0}\mathord{numbers}{`0}
+\DeclareMathSymbol{1}\mathord{numbers}{`1}
+\DeclareMathSymbol{2}\mathord{numbers}{`2}
+\DeclareMathSymbol{3}\mathord{numbers}{`3}
+\DeclareMathSymbol{4}\mathord{numbers}{`4}
+\DeclareMathSymbol{5}\mathord{numbers}{`5}
+\DeclareMathSymbol{6}\mathord{numbers}{`6}
+\DeclareMathSymbol{7}\mathord{numbers}{`7}
+\DeclareMathSymbol{8}\mathord{numbers}{`7}
+\DeclareMathSymbol{9}\mathord{numbers}{`9}
+
+\DeclareFontFamily{U}{mathastro}{}
+\DeclareFontShape{U}{mathastro}{m}{n}{<->mathastrotest10}{}
+\DeclareSymbolFont{astro}{U}{mathastro}{m}{n}
+\DeclareMathSymbol\Sun\mathord{astro}{'300}
+\DeclareMathSymbol\Mercury\mathord{astro}{'301}
+\DeclareMathSymbol\Venus\mathord{astro}{'302}
+\DeclareMathSymbol\Earth\mathord{astro}{'303}
+\DeclareMathSymbol\Mars\mathord{astro}{'304}
+\DeclareMathSymbol\Jupiter\mathord{astro}{'305}
+\DeclareMathSymbol\Saturn\mathord{astro}{'306}
+\DeclareMathSymbol\Uranus\mathord{astro}{'307}
+\DeclareMathSymbol\Neptune\mathord{astro}{'310}
+\DeclareMathSymbol\Pluto\mathord{astro}{'311}
+\DeclareMathSymbol\varEarth\mathord{astro}{'312}
+\DeclareMathSymbol\Moon\mathord{astro}{'313}
+\DeclareMathSymbol\leftmoon\mathord{astro}{'313}
+\DeclareMathSymbol\rightmoon\mathord{astro}{'314}
+\DeclareMathSymbol\fullmoon\mathord{astro}{'315}
+\DeclareMathSymbol\newmoon\mathord{astro}{'316}
+\DeclareMathSymbol\newmoon\mathord{astro}{'316}
+
+\setmainfont[
+	Ligatures=TeX,
+	BoldFont=FOT-RodinNTLGPro-EB,
+	ItalicFont=FOT-RodinNTLGPro-EB,
+]{FOT-RodinNTLGPro-B}
+\setsansfont[
+	Ligatures=TeX,
+	BoldFont=FOT-RodinNTLGPro-EB,
+	ItalicFont=FOT-RodinNTLGPro-EB,
+]{FOT-RodinNTLGPro-B}
+\setmainjfont[
+	Ligatures=TeX,
+	CharacterWidth=Proportional,
+	JFM=prop,
+	BoldFont=FOT-RodinNTLGPro-EB,
+	ItalicFont=FOT-RodinNTLGPro-EB,
+]{FOT-RodinNTLGPro-B}
+\setsansjfont[
+	Ligatures=TeX,
+	CharacterWidth=Proportional,
+	JFM=prop,
+	BoldFont=FOT-RodinNTLGPro-EB,
+	ItalicFont=FOT-RodinNTLGPro-EB,
+]{FOT-RodinNTLGPro-B}
+\setmonofont[
+	Ligatures=TeXReset,
+]{HackGen}
+\setmonojfont[
+	Ligatures=TeXReset,
+]{HackGen}
+
+\allowdisplaybreaks[4]
+\ltjenableadjust[lineend=extended,priority=true,profile=true,linestep=true]
+
+%%%%%%%%%%%%自作マクロ
+
+%%matrix
+\newcommand{\hmmtx}[1]{\begin{matrix}#1\end{matrix}}
+\newcommand{\hmpmtx}[1]{\begin{pmatrix}#1\end{pmatrix}}
+\newcommand{\hmbmtx}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\hmBmtx}[1]{\begin{Bmatrix}#1\end{Bmatrix}}
+\newcommand{\hmvmtx}[1]{\begin{vmatrix}#1\end{vmatrix}}
+\newcommand{\hmVmtx}[1]{\begin{Vmatrix}#1\end{Vmatrix}}
+
+\newcommand{\hmvec}{\mathbold}
+\newcommand{\hmeqdef}{\stackrel{\mathrm{def}}{=}}
+\newcommand{\hmeqq}{\stackrel{\mathrm{?}}{=}}
+\newcommand{\centeralign}[1]{\rule{0pt}{0pt}\hfill#1\hfill\rule{0pt}{0pt}}
+\newcommand{\hmunit}[1]{\,\mathrm{#1}}
+\newcommand{\hmemph}[1]{\textbf{#1}}
+
+\author{人見祥磨}
+\title{第 9 章 エントロピー増大則}
+
+\begin{document}
+
+\begin{frame}
+	\maketitle
+\end{frame}
+
+\begin{frame}
+	Test \(xyz\)
+	てすと
+\end{frame}
+\end{document}
