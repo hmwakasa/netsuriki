@@ -1,6 +1,6 @@
 %! LuaLaTeX 文書
 \documentclass[aspectratio=149]{beamer}
-\usetheme{metropolis}
+\usetheme[numbering=fraction,block=fill]{metropolis}
 \usefonttheme{professionalfonts}
 
 \usepackage{luatexja,luatexja-adjust}
@@ -23,11 +23,11 @@
 
 \usepackage{array}
 
-\usepackage{enumitem}
-\setlist[description,1]{labelsep*=1\zw}
+%\usepackage{enumitem}
+%\setlist[description,1]{labelsep*=1\zw}
 
-\ltjsetparameter{jacharrange={-2}}%ギリシア文字、キリル文字を AL Char に。
-\usepackage[no-math,match,deluxe,fontspec,jfm_yoko=jlreq,jfm_tate=jlreqv]{luatexja-preset}
+\ltjsetparameter{jacharrange={-2,-3,-8}}
+\usepackage[no-math,match,deluxe,fontspec]{luatexja-preset}
 
 % \usepackage[osf]{newpxtext}\usepackage{classico}
 \usepackage[nowidering]{yhmath}
@@ -137,7 +137,118 @@
 \end{frame}
 
 \begin{frame}
-	Test \(xyz\)
-	てすと
+	\frametitle{エントロピー増大則}
+	\begin{itemize}
+		\item エントロピーは\hmemph{マクロ系に対して原理的に不可能な操作}
+			を示している量でもある。
+		\item マクロ系を操作して状態を変えるということは、ミクロ系を操作
+			するよりもずっときつい制約があり、それをエントロピーで表現できる。
+	\end{itemize}
+\end{frame}
+
+\begin{frame}
+	\frametitle{9.1 簡単な例}
+	マクロ系の状態には、ある種の序列のようなものが存在し、一方から他方へは
+	簡単な操作で流れるが、逆はできないことがある。
+	
+	この系の序列のようなものをエントロピーの大小で求めることができる。
+\end{frame}
+
+\begin{frame}
+	\frametitle{}
+	\begin{block}{定理 9.1}
+		孤立系の内部束除去した後に達成される平衡状態のエントロピーは、
+		除去する前の平衡状態のエントロピーよりも、大きいか、または値が
+		変わらない。後者の場合は、マクロには何も変化が起こらないが、
+		その様になるのは、内部束縛を除去する前から、部分系のマクロ変数
+		の値が、内部束縛のないときの平衡状態における値になっていた場合に
+		限られる。
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{}
+	\begin{block}{定理 9.2}
+		平衡状態にある孤立系に、どのマクロ変数の値も直接には変えないようにして
+		新たに内部束縛を課すと、マクロには何も変化が起こらず、エントロピーの
+		値も変化しない。
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{}
+	\begin{block}{定理 9.3 エントロピー増大則 (1)}
+		平衡状態にある孤立系に対して、外部から操作できるのが、どのマクロ変数の
+		値も直接には変えないようにして内部束縛をオン/オフにすることだけだとすると、
+		系のエントロピーは増加する。
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{}
+	\begin{block}{定義: 可逆仕事源}
+		他の系と仕事を通じてエネルギーのやり取りを行うのだが、その際に
+		自分自身のエントロピー変化が無視できて、エネルギー変化が仕事だけで
+		勘定できる系を、可逆仕事源という。
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{}
+	\begin{block}{定理 9.4 エントロピー増大則 (2)}
+		断熱・断物の壁で囲まれた系に仕事をすると、系のエントロピーは増加する。
+		特に、準静的に仕事がなされる場合は、一定値を保つ。
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{}
+	\begin{block}{定理 9.5 熱の移動の向き}
+		堅くて断物の透熱壁を介してふたつの系を熱接触させると、熱は高温の系から
+		低温の系へと移動する。
+	\end{block}
+	\begin{block}{定理 9.6 熱の移動の向き}
+		温度の異なるふたつの系を透熱壁を介して接触させると、どちらの系にとっても
+		準静的過程であれば、熱は高温の系から低温の系へと移動し、ふたつの系を合わせた
+		複合系のエントロピーは強増加する。
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{}
+	\begin{block}{定義: 可逆過程・不可逆過程}
+		断熱・断物の壁で囲まれた系について、内部束縛をオン・オフにすることと
+		力学的仕事をすることだけで、どんな平衡状態間を遷移させられるかを考える。
+		ある平衡状態 A から別の平衡状態 B に変えることができたとする。もしも
+		逆に B から A に変えることも可能ならばその過程を可逆過程とよび、不可能
+		ならば不可逆過程と呼ぶ。
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{}
+	\begin{block}{定理 9.7}
+		系がいくつかの外部系と熱や力学的仕事をやり取りするとき、熱を交換する相手
+		以外の外部系 \(e\) にとって準静的過程であれば、系のエントロピー変化は、以下の
+		不等式を満たす。
+		\[\Delta S\geq\int^{\text{終状態}}_{\text{始状態}}\frac{d'Q}{T^{(e)}}\tag{9.13}\]
+	\end{block}
+\end{frame}
+
+\begin{frame}
+	\frametitle{}
+	\begin{block}{定理 9.8}
+		系がいくつかの外部系と力学的仕事をやり取りしながら、外部系 \(e_1, e_2,\dotsc\)
+		と次々に熱接触する過程が、系が熱を交換する相手の外部系 \(e_1, e_2,\dotsc\) に
+		とって準静的過程であれば、系のエントロピー変化は以下を満たす。
+		\[\Delta S\geq\sum_i
+			\int^{\text{\(e_i\)と接触する終状態}}_{\text{\(e_i\)と接触する終状態}}
+			\frac{d'Q}{T_i}\tag{9.18}\]
+		以下の 2 条件を満たす場合、等号が成立する。
+		\begin{enumerate}
+			\item 系にとっても、系と熱をやり取りする外部系にとっても、準静的な過程である。
+			\item 系が熱を \(e_i\) とやり取りするときは、系の温度は \(T_i\) と等しい。
+		\end{enumerate}
+	\end{block}
 \end{frame}
 \end{document}
